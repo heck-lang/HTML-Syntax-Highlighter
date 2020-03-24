@@ -1,0 +1,61 @@
+<html>
+	<head>
+	</head>
+	<body>
+
+		<p>Upload a file for syntax highlighting:</p>
+
+		<input type="file" id="fileUpload">
+
+		<p>...Or paste code into this textarea:</p>
+
+		<textarea id="input" style="width:500px;height:200px;"></textarea>
+		<br>
+		<button id="goButton">Go!</button>
+
+		<p>Output:</p>
+
+		<div id="output" style="background-color:black;color:#ccc;min-width:500px;min-height:500px;border:1px solid #000"></div>
+
+		<script>
+			document.getElementById("fileUpload").onchange = function(e) {
+				let fileReader = new FileReader();
+
+					fileReader.onload = function(e) {
+						setOutput(e.target.result);
+					};
+
+					fileReader.readAsText(e.target.files[0]);
+			}
+
+			document.getElementById("goButton").onclick = function() {
+				setOutput(document.getElementById("input").value);
+			}
+
+			function setOutput(code) {
+
+					// identifiers
+					code = code.replace(/\b([_a-zA-Z][_a-zA-Z0-9]*)\b/g, function(val) {
+						return "<span style=\"color:orange\">" + val + "</span>";
+					});
+
+					// keywords
+					code = code.replace(/\b(if|while|for|return|class|namespace|func|let|true|false|int|string|bool|float|char|import|export|const|friend|public|private|operator)\b/g, function(val) {
+						return "<span style=\"color:purple\">" + val + "</span>";
+					});
+
+					// numbers
+					code = code.replace(/\-?(\d+(\.\d*)?|(\d*\.)?\d+)/g, function(val) {
+						return "<span style=\"color:green\">" + val + "</span>";
+					});
+
+					code = code.replace(/\n/g, "<br>");
+					//code = code.replace(/ /g, "&nbsp;");
+					//code = code.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+
+				document.getElementById("output").innerHTML = code;
+			}
+		</script>
+
+	</body>
+</html>
