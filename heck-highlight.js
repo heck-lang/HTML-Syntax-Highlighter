@@ -20,7 +20,7 @@ hljs.registerLanguage("heck", function() {
             {
                 className: 'string',
                 contains: [
-                    'self', hljs.BACKSLASH_ESCAPE,
+                    hljs.BACKSLASH_ESCAPE,
                     {
                         begin: '$', endsParent: true
                     }
