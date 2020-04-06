@@ -5,7 +5,7 @@ You can manually generate static HTML to include in your blog or website using t
 
 You can also dynamically highlight code by including highlight.js scripts:
 
-'''html
+```html
 <!-- highlight.js script and stylesheet (more info at highlightjs.org) -->
 <link rel="stylesheet" href="/path/to/styles/default.css">
 <script src="/path/to/highlight.pack.js"></script>
@@ -26,4 +26,4 @@ insert heck code here
 
 ...
 </code></pre>
-'''
+```
