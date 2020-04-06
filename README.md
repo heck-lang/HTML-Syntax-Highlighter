@@ -20,10 +20,6 @@ You can also dynamically highlight code by including highlight.js scripts:
 
 <!-- put heck code into a <pre><code> tag like so: -->
 <pre><code class="language-heck">
-...
-
-insert heck code here
-
-...
+insert heck code here!
 </code></pre>
 ```
