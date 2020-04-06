@@ -23,7 +23,7 @@
 				color:white;
 			}
 
-			.scroll-container {
+			#previewContainer {
 				display: inline-block;
 				overflow: scroll;
 				width: 100%;
@@ -46,7 +46,7 @@
 
 		<p>Output:</p>
 
-		<div class="scroll-container">
+		<div id="previewContainer">
 			<pre><code class="language-heck" id="preview"></code></pre>
 		</div>
 
@@ -76,7 +76,10 @@
 			function setOutput(code) {
 				preview.innerHTML = code;
 				hljs.highlightBlock(preview);
-				output.value = preview.innerHTML;
+				output.value =
+					"<pre><code class=\"hljs\">\n" +
+					preview.innerHTML +
+					"\n</code></pre>";
 			}
 		</script>
 
