@@ -1,5 +1,36 @@
 <html>
 	<head>
+		<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/paraiso-dark.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+		<script src="heck-highlight.js"></script>
+		<style>
+			#input {
+				width:600px;
+				height:200px;
+			}
+			
+			#output {
+				width: 600px;
+				height: 500px;
+			}
+
+			#goButton {
+				width:40px;
+				height:20px;
+				background-color:green;
+				border:1px solid black;
+				color:white;
+			}
+
+			.scroll-container {
+				display: inline-block;
+				overflow: scroll;
+				width: 100%;
+				max-width: 600px;
+				max-height: 500px;
+			}
+		</style>
 	</head>
 	<body>
 
@@ -9,15 +40,22 @@
 
 		<p>...Or paste code into this textarea:</p>
 
-		<textarea id="input" style="width:500px;height:200px;"></textarea>
+		<textarea id="input"></textarea>
 		<br>
 		<button id="goButton">Go!</button>
 
 		<p>Output:</p>
 
-		<div id="output" style="background-color:black;color:#ccc;min-width:500px;min-height:500px;border:1px solid #000"></div>
+		<div class="scroll-container">
+			<pre><code class="language-heck" id="preview"></code></pre>
+		</div>
+
+		<p>HTML Code:</p>
+
+		<textarea id="output"></textarea>
 
 		<script>
+
 			document.getElementById("fileUpload").onchange = function(e) {
 				let fileReader = new FileReader();
 
@@ -32,28 +70,13 @@
 				setOutput(document.getElementById("input").value);
 			}
 
+			let preview = document.getElementById("preview");
+			let output = document.getElementById("output");
+
 			function setOutput(code) {
-
-					// identifiers
-					code = code.replace(/\b([_a-zA-Z][_a-zA-Z0-9]*)\b/g, function(val) {
-						return "<span style=\"color:orange\">" + val + "</span>";
-					});
-
-					// keywords
-					code = code.replace(/\b(if|while|for|return|class|namespace|func|let|true|false|int|string|bool|float|char|import|export|const|friend|public|private|operator)\b/g, function(val) {
-						return "<span style=\"color:purple\">" + val + "</span>";
-					});
-
-					// numbers
-					code = code.replace(/\-?(\d+(\.\d*)?|(\d*\.)?\d+)/g, function(val) {
-						return "<span style=\"color:green\">" + val + "</span>";
-					});
-
-					code = code.replace(/\n/g, "<br>");
-					//code = code.replace(/ /g, "&nbsp;");
-					//code = code.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
-
-				document.getElementById("output").innerHTML = code;
+				preview.innerHTML = code;
+				hljs.highlightBlock(preview);
+				output.value = preview.innerHTML;
 			}
 		</script>
 
