@@ -2,7 +2,8 @@ hljs.registerLanguage("heck", function() {
 
     let HECK_KEYWORDS = {
         keyword: 'if while for return class namespace func let int string bool float char import export const friend public private operator global this',
-        literal: 'true false'
+        literal: 'true false',
+        built_in: 'print'
     };
     
     let HECK_NUMBERS = {
