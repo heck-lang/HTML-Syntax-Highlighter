@@ -1,10 +1,29 @@
 <html>
 	<head>
+		<link rel="stylesheet" href="//heck-lang.github.io/style.css">
 		<link rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/paraiso-dark.min.css">
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/railscasts.min.css">
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
 		<script src="heck-highlight.js"></script>
 		<style>
+			body {
+				color: #ccc;
+				background-color: #333;
+				font-size: 16px;
+				font-family: helvetica;
+			}
+
+			#demoContent {
+				margin: 20px;
+			}
+
+			textarea {
+				background-color: #232323;
+				color: #fff;
+				padding: 10px;
+				border: 0px;
+			}
+
 			#input {
 				width:600px;
 				height:200px;
@@ -16,44 +35,52 @@
 			}
 
 			#goButton {
-				width:40px;
-				height:20px;
-				background-color:green;
+				width:75px;
+				height:35px;
+				background-color:#33aa90;
 				border:1px solid black;
 				color:white;
+				font-size: 16px;
 			}
 
 			#previewContainer {
+				background-color: #232323;
 				display: inline-block;
 				overflow: scroll;
 				width: 100%;
 				max-width: 600px;
 				max-height: 500px;
+				font-size: initial;
 			}
 		</style>
 	</head>
 	<body>
-
-		<p>Upload a file for syntax highlighting:</p>
-
-		<input type="file" id="fileUpload">
-
-		<p>...Or paste code into this textarea:</p>
-
-		<textarea id="input"></textarea>
-		<br>
-		<button id="goButton">Go!</button>
-
-		<p>Output:</p>
-
-		<div id="previewContainer">
-			<pre><code class="language-heck" id="preview"></code></pre>
+		<div class="header">
+			<div id="title"><b><i>Heck Syntax Highlighter</i></b></div>
+			<img src="//heck-lang.github.io/assets/logo.png">
 		</div>
+		<div id="demoContent">
+			<p>Upload a file for syntax highlighting:</p>
 
-		<p>HTML Code:</p>
+			<input type="file" id="fileUpload">
 
-		<textarea id="output"></textarea>
+			<p>...Or paste code into this textarea:</p>
 
+			<textarea id="input"></textarea>
+			<br>
+			<br>
+			<button id="goButton">Go!</button>
+
+			<p>Output:</p>
+
+			<div id="previewContainer">
+				<pre><code class="language-heck" id="preview">  ^^ Please enter code above ^^</code></pre>
+			</div>
+
+			<p>HTML Code:</p>
+
+			<textarea id="output"></textarea>
+		</div>
 		<script>
 
 			document.getElementById("fileUpload").onchange = function(e) {
