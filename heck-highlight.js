@@ -1,7 +1,7 @@
 hljs.registerLanguage("heck", function() {
 
     let HECK_KEYWORDS = {
-        keyword: 'if while for return class namespace func let int string bool float char import export const friend public private operator global this',
+        keyword: 'if while for return class namespace func let int string bool float char import export const static friend public private operator global this new unique shared',
         literal: 'true false',
         built_in: 'print'
     };
