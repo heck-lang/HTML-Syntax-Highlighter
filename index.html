@@ -105,12 +105,12 @@
 			let output = document.getElementById("output");
 
 			function setOutput(code) {
-				preview.innerHTML = code;
+				preview.innerText = code;
 				hljs.highlightBlock(preview);
 				output.value =
-					"<pre><code class=\"hljs\">\n" +
+					"<div class=\"hljs\">\n<pre>" +
 					preview.innerHTML +
-					"\n</code></pre>";
+					"</pre>\n</div>";
 			}
 		</script>
 
