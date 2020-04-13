@@ -92,6 +92,8 @@
 		</div>
 		<script>
 
+			//hljs.configure({useBR: true});
+
 			document.getElementById("fileUpload").onchange = function(e) {
 				let fileReader = new FileReader();
 
@@ -110,11 +112,11 @@
 			let output = document.getElementById("output");
 
 			function setOutput(code) {
-				preview.innerText = code;
+				preview.innerHTML = code;
 				hljs.highlightBlock(preview);
 				output.value =
 					"<div class=\"hljs\">\n<pre>" +
-					preview.innerHTML +
+					preview.innerHTML.replace(/(\r\n|\n)/g, "<br>") +
 					"</pre>\n</div>";
 			}
 		</script>
