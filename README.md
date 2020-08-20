@@ -11,7 +11,7 @@ You can also dynamically highlight code by including highlight.js scripts:
 <script src="/path/to/highlight.pack.js"></script>
 
 <!-- heck syntax highlighter -->
-<script src="https://heck-lang.github.io/heck-syntax-highlighter/heck-highlight.js">
+<script src="https://heck-lang.github.io/heck-syntax-highlighter/heck-highlight.js"></script>
   
 <!-- automatically highlightes code on page load -->
 <script>hljs.initHighlightingOnLoad();</script>
